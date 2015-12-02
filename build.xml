@@ -18,7 +18,13 @@
 		</javac>
 	</target>	
 	
-	<target name="jar" depends="compile">
+	<target name="copy-resources">
+		<copy todir="${build}">
+			<fileset dir="resources" />
+		</copy>
+	</target>
+	
+	<target name="jar" depends="compile, copy-resources">
 		<!-- Build the jar file -->
 		<jar basedir="${build}" destfile="jbig2.jar"/>
 	</target>
